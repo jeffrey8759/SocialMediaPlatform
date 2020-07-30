@@ -15,28 +15,14 @@ class Main extends React.Component {
 			<body>
 			<Router>
       	<div>
-        	<nav>
-          	<ul>
-            	<li>
-              	<Link to="/">Home</Link>
-            	</li>
-            	<li>
-              	<Link to="/login">Login</Link>
-            	</li>
-            	<li>
-              	<Link to="/users">Users</Link>
-            	</li>
-          	</ul>
-        	</nav>
-
         	{/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         	<Switch>
           	<Route path="/login">
             	<Login />
           	</Route>
-          	<Route path="/users">
-            	<Users />
+          	<Route path="/register">
+            	<Register />
           	</Route>
           	<Route path="/">
             	<Home />
@@ -53,58 +39,54 @@ class Login extends React.Component {
   render() {
     return (
       <div class="login">
-      <form action="action_page.php" method="post">
-      <div class="imgcontainer">
-      </div>
+        <h1> Sign in </h1>
+        <form action="action_page.php" method="post">
+          <div class="imgcontainer">
+          </div>
 
-      <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required/>
+          <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required/>
 
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required/>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required/>
 
-      <button type="submit">Login</button>
-      <label>
-      <input type="checkbox" name="remember"/> Remember me
-      </label>
-      </div>
-
-      <div class="container" style={{backgroundColor:'#f1f1f1'}}>
-      <button type="button" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-      </div>
-      </form>
-      <div>
-      <nav>
-      <ul>
-      <li>
-      <Link to="/">Home</Link>
-      </li>
-      <li>
-      <Link to="/login">Login</Link>
-      </li>
-      <li>
-      <Link to="/users">Users</Link>
-      </li>
-      </ul>
-      </nav>
-      </div>
+            <button type="submit">Login</button>
+            <label id='rem'>
+              <input type="checkbox" name="remember"/> Remember me
+            </label>
+          </div>
+        </form>
+        <div class="container" style={{backgroundColor:'#f1f1f1'}}>
+          <a href='/'><button>Cancel</button></a>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
       </div>
     )
   }
 }
 
 function Home() {
-  return <h2>Home</h2>;
+  return(
+    <div class='intro-page'>
+      <h1>EveryBoard</h1>
+      <h2>Welcome</h2>
+      <nav>
+        <ul>
+          <a href='/login'><button>Login</button></a>
+          <a href='/register'><button>Register</button></a>
+        </ul>
+      </nav>
+    </div>
+  )
 }
 
 function About() {
   return <h2>About</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function Register() {
+  return <h2>Register</h2>;
 }
 
 ReactDOM.render(
